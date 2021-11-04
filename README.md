@@ -1,5 +1,5 @@
-## **BPI-M5-bsp**
-Banana Pi M5 board bsp (u-boot 2015.1 & Kernel 4.9.236)
+## **BPI-M2S-bsp**
+Banana Pi M2S board bsp (u-boot 2015.1 & Kernel 4.9.236)
 
 ----------
 **Prepare**
@@ -10,7 +10,7 @@ Get the docker image from [Sinovoip Docker Hub](https://hub.docker.com/r/sinovoi
 
 Download source code
 
-    $ git clone https://github.com/BPI-SINOVOIP/BPI-M5-bsp
+    $ git clone https://github.com/BPI-SINOVOIP/BPI-M2S-bsp
     $ git submodule update --init --recursive
 
  **Build**
@@ -23,7 +23,7 @@ Target download packages in SD/bpi-m5 after build. Please check the build.sh and
 
 **Install**
 
-Get the image from [bpi](http://wiki.banana-pi.org/Banana_Pi_BPI-M5#Image_Release) and download it to the SD card. After finish, insert the SD card to PC
+Get the image from [bpi](http://wiki.banana-pi.org/Banana_Pi_BPI-M2S#Image_Release) and download it to the SD card. After finish, insert the SD card to PC
 
     # ./build.sh 6
 
