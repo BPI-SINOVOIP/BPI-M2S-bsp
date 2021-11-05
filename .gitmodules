@@ -1,0 +1,8 @@
+[submodule "linux-aml"]
+	path = linux-aml
+	url = https://github.com/Dangku/khadas-linux
+	branch = khadas-vims-4.9.y
+[submodule "u-boot-aml"]
+	path = u-boot-aml
+	url = https://github.com/Dangku/khadas-uboot
+	branch = khadas-vims-v2015.01
