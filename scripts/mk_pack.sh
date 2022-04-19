@@ -78,10 +78,10 @@ tar_packages()
 {
 	echo "tar download packages"
 
-	(cd $BOOT ; tar czvf ${TOPDIR}/SD/${BOARD}/BPI-BOOT-${BOARD}.tgz .)
-	(cd $ROOT ; tar czvf ${TOPDIR}/SD/${BOARD}/${KERNEL_MODULES}-Kernel.tgz lib/modules)
-	(cd $ROOT ; tar czvf ${TOPDIR}/SD/${BOARD}/${KERNEL_HEADERS}-Kernel.tgz usr/src/${KERNEL_HEADERS})
-	(cd $ROOT ; tar czvf ${TOPDIR}/SD/${BOARD}/BOOTLOADER-${BOARD}.tgz usr/lib/u-boot/bananapi)
+	(cd $BOOT ; tar czvf ${TOPDIR}/SD/${BOARD}/BPI-BOOT-${BOARD}.tgz .) 2>&1 > /dev/null
+	(cd $ROOT ; tar czvf ${TOPDIR}/SD/${BOARD}/${KERNEL_MODULES}-Kernel.tgz lib/modules) 2>&1 > /dev/null
+	(cd $ROOT ; tar czvf ${TOPDIR}/SD/${BOARD}/${KERNEL_HEADERS}-Kernel.tgz usr/src/${KERNEL_HEADERS}) 2>&1 > /dev/null
+	(cd $ROOT ; tar czvf ${TOPDIR}/SD/${BOARD}/BOOTLOADER-${BOARD}.tgz usr/lib/u-boot/bananapi) 2>&1 > /dev/null
 }
 
 pack_bootloader
@@ -90,3 +90,5 @@ pack_root
 tar_packages
 
 echo "pack finish"
+
+ls -l SD/${BOARD}/*.tgz
