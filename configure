@@ -80,22 +80,12 @@ fi
 
 BOARD=$1
 case $BOARD in
-	bpi-m5)
-		MACH=sm1
-		ARCH=arm64
-		BOARD=bpi-m5
-		uboot_config=bananapi_m5_defconfig
-		kernel_dtb=meson64_bananapi_*.dtb
-		kernel_config=bananapi_m5_defconfig
-		kernel_modules="4.9.241-BPI-M5"
-		kernel_headers="linux-headers-4.9.241-BPI-M5"
-		;;
 	bpi-m2s)
 		MACH=g12b
 		ARCH=arm64
 		BOARD=bpi-m2s
 		uboot_config=bananapi_m2s_defconfig
-		kernel_dtb=bananapi_m2s.dtb
+		kernel_dtb=bananapi_m2s*.dtb
 		kernel_config=bananapi_m2s_defconfig
 		kernel_modules="4.9.241-BPI-M2S"
 		kernel_headers="linux-headers-4.9.241-BPI-M2S"
