@@ -1,0 +1,6 @@
+# Mipi panel type
+#    Symbol    | Resolution
+# ----------------------+-------------
+#    "lcd_0"   | 10" 800x1280 panel
+#    "lcd_1"   | 10" 1200x1920 panel
+panel_type=lcd_0
