@@ -6,11 +6,10 @@ BOARD=
 TARGET=
 
 echo "--------------------------------------------------------------------------------"
-echo "  1. KVIM3"
-echo "  2. M2S"
+echo "  1. M2S"
 echo "--------------------------------------------------------------------------------"
 
-read -p "Please choose a target to install(1-2): " board
+read -p "Please choose a target to install(1): " board
 echo
 
 if [ -z "${board}" ]; then
@@ -19,10 +18,7 @@ if [ -z "${board}" ]; then
 fi
 
 case ${board} in
-	1) BOARD="kvim3"
-	   TARGET=${BOARD}
-	   ;;
-	2) BOARD="m2s"
+	1) BOARD="m2s"
 	   TARGET=bpi-${BOARD}
 	   ;;
 esac

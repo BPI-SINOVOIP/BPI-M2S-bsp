@@ -19,7 +19,7 @@ Build all bsp packages, please run
 
 `#./build.sh 1`
 
-Target download packages in SD/bpi-m5 after build. Please check the build.sh and Makefile for detail
+Target download packages in SD/bpi-m2s after build. Please check the build.sh and Makefile for detail
 
 **Install**
 

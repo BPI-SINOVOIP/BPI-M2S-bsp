@@ -90,16 +90,6 @@ case $BOARD in
 		kernel_modules="4.9.241-BPI-M2S"
 		kernel_headers="linux-headers-4.9.241-BPI-M2S"
 		;;
-	kvim3)
-                MACH=g12b
-                ARCH=arm64
-                BOARD=kvim3
-                uboot_config=kvim3_defconfig
-                kernel_dtb=kvim3_linux.dtb
-                kernel_config=kvims_defconfig
-                kernel_modules="4.9.241"
-                kernel_headers="linux-headers-4.9.241"
-                ;;
 	*)
 		;;
 esac
