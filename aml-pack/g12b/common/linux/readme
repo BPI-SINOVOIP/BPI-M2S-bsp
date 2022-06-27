@@ -1,0 +1,3 @@
+# update-initramfs -uv -k `uname -r`
+# cd /boot/
+# mkimage -A arm64 -O linux -T ramdisk -C gzip -n uInitrd -d initrd.img-4.9.241-BPI-M2S uInitrd
