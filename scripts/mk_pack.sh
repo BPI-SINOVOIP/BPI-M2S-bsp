@@ -91,7 +91,7 @@ pack_deb()
 	local pkgdir=/tmp/${pkgname}-deb
 	local version=`date +"%Y%m%d"`
 
-	rm -rf ${TOPDIR}/SD/${BOARD}-bsp.deb
+	rm -rf ${TOPDIR}/SD/${BOARD}-bsp*.deb
 	rm -rf $pkgdir
 	mkdir -p ${pkgdir}/DEBIAN
 	cp -a ${TOPDIR}/SD/${BOARD}/BPI-ROOT/* ${pkgdir}/
@@ -166,7 +166,7 @@ pack_bootloader
 pack_boot
 pack_root
 tar_packages
-#pack_deb
+pack_deb
 
 echo "pack finish"
 
