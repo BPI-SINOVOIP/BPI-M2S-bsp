@@ -84,10 +84,89 @@ tar_packages()
 	(cd $ROOT ; tar czvf ${TOPDIR}/SD/${BOARD}/BOOTLOADER-${BOARD}.tgz usr/lib/u-boot/bananapi) 2>&1 > /dev/null
 }
 
+pack_deb()
+{
+	echo "pack bsp deb"
+	local pkgname=${BOARD}-bsp
+	local pkgdir=/tmp/${pkgname}-deb
+	local version=`date +"%Y%m%d"`
+
+	rm -rf ${TOPDIR}/SD/${BOARD}-bsp.deb
+	rm -rf $pkgdir
+	mkdir -p ${pkgdir}/DEBIAN
+	cp -a ${TOPDIR}/SD/${BOARD}/BPI-ROOT/* ${pkgdir}/
+	cp -a ${TOPDIR}/SD/${BOARD}/BPI-BOOT ${pkgdir}/boot
+
+	# control file
+	cat <<-EOF > ${pkgdir}/DEBIAN/control
+	Package: $pkgname
+	Version: ${version}-1
+	Section: kernel
+	Architecture: $ARCH
+	Maintainer: BPI
+	Installed-Size: 1
+	Priority: optional
+	Depends: bash
+	Description: Bananapi M2S bsp
+	EOF
+
+	# pre install script
+	cat <<-EOF > ${pkgdir}/DEBIAN/preinst
+	#!/bin/bash
+
+	del_boot() {
+		boot_device=\$(mountpoint -d /boot)
+
+		for file in /dev/* ; do
+			CURRENT_DEVICE=\$(printf "%d:%d" \$(stat --printf="0x%t 0x%T" \$file))
+			if [[ "\$CURRENT_DEVICE" = "\$boot_device" ]]; then
+				boot_partition=\$file
+				break
+			fi
+		done
+
+		bootfstype=\$(blkid -s TYPE -o value \$boot_partition)
+		if [ "\$bootfstype" = "vfat" ]; then
+			rm -rf /boot/*
+		fi
+	}
+
+	# del current boot files
+	mountpoint -q /boot && del_boot
+
+	# del current root files
+	rm -rf /lib/modules/${KERNEL_MODULES}
+	rm -rf /usr/src/${KERNEL_HEADERS}
+	rm -rf /usr/lib/u-boot/bananapi/${BOARD}/${BOARD}-512b.img.gz
+
+	EOF
+
+	chmod 755 $pkgdir/DEBIAN/preinst
+
+	# post install script
+	cat <<-EOF > ${pkgdir}/DEBIAN/postinst
+	#!/bin/bash
+
+	# install bootloader
+	rootpart=\$(df -P / | tail -n 1 | awk '/.*/ { print \$1 }')
+	dev=\$(lsblk -n -o PKNAME \$rootpart)
+	bootloader=/usr/lib/u-boot/bananapi/${BOARD}/${BOARD}-512b.img.gz
+	if [ -f \$bootloader ]; then
+		gunzip -c \${bootloader} | sudo dd of=/dev/\${dev} bs=512 seek=1
+	fi
+
+	EOF
+
+	chmod 755 $pkgdir/DEBIAN/postinst
+
+	fakeroot dpkg-deb -b $pkgdir ${TOPDIR}/SD/${BOARD}
+}
+
 pack_bootloader
 pack_boot
 pack_root
 tar_packages
+#pack_deb
 
 echo "pack finish"
 
