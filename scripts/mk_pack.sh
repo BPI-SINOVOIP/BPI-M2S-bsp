@@ -152,7 +152,7 @@ pack_deb()
 	dev=\$(lsblk -n -o PKNAME \$rootpart)
 	bootloader=/usr/lib/u-boot/bananapi/${BOARD}/${BOARD}-512b.img.gz
 	if [ -f \$bootloader ]; then
-		gunzip -c \${bootloader} | sudo dd of=/dev/\${dev} bs=512 seek=1
+		gunzip -c \${bootloader} | dd of=/dev/\${dev} bs=512 seek=1
 	fi
 
 	EOF
