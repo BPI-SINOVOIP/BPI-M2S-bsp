@@ -90,6 +90,16 @@ case $BOARD in
 		kernel_modules="4.9.241-BPI-M2S"
 		kernel_headers="linux-headers-4.9.241-BPI-M2S"
 		;;
+	bpi-cm4)
+		MACH=g12b
+		ARCH=arm64
+		BOARD=bpi-cm4
+		uboot_config=bananapi_cm4_defconfig
+		kernel_dtb=bananapi_cm4*.dtb
+		kernel_config=bananapi_cm4_defconfig
+		kernel_modules="4.9.241-BPI-CM4"
+		kernel_headers="linux-headers-4.9.241-BPI-CM4"
+		;;
 	*)
 		;;
 esac

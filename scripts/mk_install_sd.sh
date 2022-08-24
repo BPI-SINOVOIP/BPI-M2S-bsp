@@ -7,9 +7,10 @@ TARGET=
 
 echo "--------------------------------------------------------------------------------"
 echo "  1. M2S"
+echo "  2. CM4"
 echo "--------------------------------------------------------------------------------"
 
-read -p "Please choose a target to install(1): " board
+read -p "Please choose a target to install(1-2): " board
 echo
 
 if [ -z "${board}" ]; then
@@ -19,6 +20,9 @@ fi
 
 case ${board} in
 	1) BOARD="m2s"
+	   TARGET=bpi-${BOARD}
+	   ;;
+	2) BOARD="cm4"
 	   TARGET=bpi-${BOARD}
 	   ;;
 esac
