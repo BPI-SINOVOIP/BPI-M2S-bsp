@@ -1,5 +1,5 @@
 ## **BPI-M2S-bsp**
-Banana Pi M2S board bsp (u-boot 2015.1 & Kernel 4.9.236)
+Banana Pi M2S/CM4 board bsp (u-boot 2015.1 & Kernel 4.9.241)
 
 ----------
 **Prepare**
@@ -17,7 +17,8 @@ Download source code
 
 Build all bsp packages, please run
 
-`#./build.sh 1`
+    # ./build.sh bpi-m2s 1        //build m2s bsp
+    # ./build.sh bpi-cm4 1        //build cm4 bsp
 
 Target download packages in SD/bpi-m2s after build. Please check the build.sh and Makefile for detail
 
@@ -25,6 +26,7 @@ Target download packages in SD/bpi-m2s after build. Please check the build.sh an
 
 Get the image from [bpi](http://wiki.banana-pi.org/Banana_Pi_BPI-M2S#Image_Release) and download it to the SD card. After finish, insert the SD card to PC
 
-    # ./build.sh 6
+    # ./build.sh bpi-m2s 6        //install m2s bsp
+    # ./build.sh bpi-cm4 6        //install cm4 bsp
 
 Choose the type, enter the SD dev, and confirm yes, all the build packages will be installed to target SD card.
