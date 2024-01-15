@@ -11,6 +11,7 @@ Get the docker image from [Sinovoip Docker Hub](https://hub.docker.com/r/sinovoi
 Download source code
 
     $ git clone https://github.com/BPI-SINOVOIP/BPI-M2S-bsp
+    $ cd BPI-M2S-bsp
     $ git submodule update --init --recursive
 
  **Build**

@@ -56,7 +56,7 @@ generate_board_envsh() {
 	export ARCH=$ARCH
 	export BOARD=$BOARD
 	export UBOOT_CONFIG=$uboot_config
-	export KERNEL_DTB=$kernel_dtb
+	export KERNEL_DTB="$kernel_dtb"
 	export KERNEL_CONFIG=$kernel_config
 	export KERNEL_MODULES=${kernel_modules}
 	export KERNEL_HEADERS=${kernel_headers}
@@ -85,7 +85,7 @@ case $BOARD in
 		ARCH=arm64
 		BOARD=bpi-m2s
 		uboot_config=bananapi_m2s_defconfig
-		kernel_dtb=bananapi_m2s*.dtb
+		kernel_dtb="bananapi_m2s bananapi_m2s_922x"
 		kernel_config=bananapi_m2s_defconfig
 		kernel_modules="4.9.241-BPI-M2S"
 		kernel_headers="linux-headers-4.9.241-BPI-M2S"
@@ -95,13 +95,13 @@ case $BOARD in
 		ARCH=arm64
 		BOARD=bpi-cm4
 		uboot_config=bananapi_cm4_defconfig
-		kernel_dtb=bananapi_cm4*.dtb
+		kernel_dtb="bananapi_cm4io raspberrypi_cm4io"
 		kernel_config=bananapi_cm4_defconfig
 		kernel_modules="4.9.241-BPI-CM4"
 		kernel_headers="linux-headers-4.9.241-BPI-CM4"
 		;;
 	*)
-		echo -e "\033[31mboardd ${BOARD} is not support\033[0m"
+		echo -e "\033[31mboard ${BOARD} is not support\033[0m"
 		exit 1
 		;;
 esac

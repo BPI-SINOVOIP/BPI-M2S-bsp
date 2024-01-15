@@ -49,7 +49,9 @@ pack_boot()
 	cp -a ${PACK}/${MACH}/common/linux/uInitrd ${dest_path}/
 	cp -a ${PACK}/${MACH}/${BOARD}/linux/* ${dest_path}/
 	cp -a ${KERN_DIR}/arch/${ARCH}/boot/Image.gz ${dest_path}/
-	cp -a ${KERN_DIR}/arch/${ARCH}/boot/dts/amlogic/${KERNEL_DTB} ${dest_path}/
+	for dts in ${KERNEL_DTB}; do
+		cp -a ${KERN_DIR}/arch/${ARCH}/boot/dts/amlogic/${dts}.dtb ${dest_path}/
+	done
 	cp -a ${KERN_DIR}/arch/${ARCH}/boot/dts/amlogic/overlays/${BOARD}/*.dtbo ${dest_path}/overlays/
 }
 
