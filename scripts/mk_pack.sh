@@ -81,8 +81,8 @@ tar_packages()
 	echo "tar download packages"
 
 	(cd $BOOT ; tar czvf ${TOPDIR}/SD/${BOARD}/BPI-BOOT-${BOARD}.tgz .) 2>&1 > /dev/null
-	(cd $ROOT ; tar czvf ${TOPDIR}/SD/${BOARD}/${KERNEL_MODULES}-Kernel.tgz lib/modules) 2>&1 > /dev/null
-	(cd $ROOT ; tar czvf ${TOPDIR}/SD/${BOARD}/${KERNEL_HEADERS}-Kernel.tgz usr/src/${KERNEL_HEADERS}) 2>&1 > /dev/null
+	(cd $ROOT ; tar czvf ${TOPDIR}/SD/${BOARD}/${KERNEL_MODULES}-${BOARD}-Kernel.tgz lib/modules) 2>&1 > /dev/null
+	(cd $ROOT ; tar czvf ${TOPDIR}/SD/${BOARD}/${KERNEL_HEADERS}-${BOARD}-Kernel.tgz usr/src/${KERNEL_HEADERS}) 2>&1 > /dev/null
 	(cd $ROOT ; tar czvf ${TOPDIR}/SD/${BOARD}/BOOTLOADER-${BOARD}.tgz usr/lib/u-boot/bananapi) 2>&1 > /dev/null
 }
 

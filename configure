@@ -87,8 +87,8 @@ case $BOARD in
 		uboot_config=bananapi_m2s_defconfig
 		kernel_dtb="bananapi_m2s bananapi_m2s_922x"
 		kernel_config=bananapi_m2s_defconfig
-		kernel_modules="4.9.241-BPI-M2S"
-		kernel_headers="linux-headers-4.9.241-BPI-M2S"
+		kernel_modules="4.9.241"
+		kernel_headers="linux-headers-4.9.241"
 		;;
 	bpi-cm4)
 		MACH=g12b
@@ -97,8 +97,8 @@ case $BOARD in
 		uboot_config=bananapi_cm4_defconfig
 		kernel_dtb="bananapi_cm4io raspberrypi_cm4io"
 		kernel_config=bananapi_cm4_defconfig
-		kernel_modules="4.9.241-BPI-CM4"
-		kernel_headers="linux-headers-4.9.241-BPI-CM4"
+		kernel_modules="4.9.241"
+		kernel_headers="linux-headers-4.9.241"
 		;;
 	*)
 		echo -e "\033[31mboard ${BOARD} is not support\033[0m"
